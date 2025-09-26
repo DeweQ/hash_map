@@ -7,5 +7,14 @@ module DataStructure
       @capacity = capacity
       @load_factor = load_factor
     end
+    
+    def hash(key)
+      hash_code = 0
+      prime = 79
+      
+      key.each_char { |chr| hash_code = prime * hash_code + chr.ord }
+      
+      hash_code
+    end
   end
 end

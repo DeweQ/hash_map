@@ -1,2 +1,2 @@
-# hash_map
-HashMap implementation on ruby
+# Hash Map
+Part of The Odin Project ruby course. HashMap implementation on ruby.

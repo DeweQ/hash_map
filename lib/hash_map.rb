@@ -60,6 +60,20 @@ module DataStructure
       nil
     end
 
+    def entries
+      data = []
+      @buckets.each { |bucket| bucket.each { |pair| data << pair } }
+      data
+    end
+
+    def keys
+      entries.map { |entry| entry[0] }
+    end
+
+    def values
+      entries.map { |entry| entry[1] }
+    end
+
     private
 
     def bucket_by_key(key)

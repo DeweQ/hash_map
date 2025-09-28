@@ -89,9 +89,8 @@ module DataStructure
     end
 
     def grow
-      data = []
       @length = 0
-      @buckets.each { |bucket| bucket.each { |pair| data << pair } }
+      data = entries
       @buckets = Array.new(capacity * 2) { LinkedList::List.new }
       data.each { |pair| set(pair[0], pair[1]) }
     end

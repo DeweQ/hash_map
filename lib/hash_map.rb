@@ -42,6 +42,10 @@ module DataStructure
       false
     end
 
+    def get(key)
+      bucket_by_key(key).each { |pair| return pair[1] if pair[0] == key }
+    end
+
     private
 
     def bucket_by_key(key)

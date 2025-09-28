@@ -55,6 +55,11 @@ module DataStructure
       bucket.delete(pair)
     end
 
+    def clear
+      @buckets = Array.new(capacity) { LinkedList::List.new }
+      nil
+    end
+
     private
 
     def bucket_by_key(key)

@@ -36,6 +36,12 @@ module DataStructure
       nil
     end
 
+    def has?(key)
+      bucket = bucket_by_key(key)
+      bucket.each { |pair| return true if pair[0] == key }
+      false
+    end
+
     private
 
     def bucket_by_key(key)

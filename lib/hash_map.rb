@@ -24,6 +24,7 @@ module DataStructure
     end
 
     def set(key, value)
+      grow if overload?
       bucket = bucket_by_key(key)
       pair = find_in_bucket(bucket, key)
       if pair.nil?
@@ -43,6 +44,18 @@ module DataStructure
 
     def find_in_bucket(bucket, key)
       bucket.each { |p| return p if p in [^key, *] }
+    end
+
+    def overload?
+      @length.to_f / capacity > @load_factor
+    end
+
+    def grow
+      data = []
+      @length = 0
+      @buckets.each { |bucket| bucket.each { |pair| data << pair } }
+      @buckets = Array.new(capacity * 2) { LinkedList::List.new }
+      data.each { |pair| set(pair[0], pair[1]) }
     end
   end
 end

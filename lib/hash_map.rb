@@ -46,6 +46,15 @@ module DataStructure
       bucket_by_key(key).each { |pair| return pair[1] if pair[0] == key }
     end
 
+    def remove(key)
+      return nil unless has?(key)
+
+      @length -= 1
+      bucket = bucket_by_key(key)
+      pair = find_in_bucket(bucket, key)
+      bucket.delete(pair)
+    end
+
     private
 
     def bucket_by_key(key)
